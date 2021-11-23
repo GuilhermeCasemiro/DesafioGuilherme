@@ -26,7 +26,7 @@ class ChocolateTest {
         var chocolate = new Chocolate();
 
         chocolate.setNome("Bombom ao Leite");
-        chocolate.setPreco(2.99);
+        chocolate.setPrecoPorQuilograma(2.99);
 
         chocolateService.save(chocolate);
 
@@ -38,17 +38,17 @@ class ChocolateTest {
         var chocolate = new Chocolate();
 
         chocolate.setNome("Bombom Meio Amargo");
-        chocolate.setPreco(3.49);
+        chocolate.setPrecoPorQuilograma(3.49);
 
         chocolateService.save(chocolate);
         var idOriginal = chocolate.getId();
 
-        chocolate.setPreco(3.99);
+        chocolate.setPrecoPorQuilograma(3.99);
 
         chocolateService.save(chocolate);
 
         assertEquals(idOriginal, chocolate.getId());
-        assertEquals(3.99, chocolate.getPreco());
+        assertEquals(3.99, chocolate.getPrecoPorQuilograma());
 
         var list = chocolateService.getAll();
     }
@@ -59,7 +59,7 @@ class ChocolateTest {
         var chocolates = IntStream.range(0, 20).mapToObj(i -> {
             var chocolate = new Chocolate();
             chocolate.setNome("Chocolate " + i);
-            chocolate.setPreco((i + 1) / 10D);
+            chocolate.setPrecoPorQuilograma((i + 1) / 10D);
 
             //Os últimos chocolates da lista terão as notas mais altas
             chocolate.getNota().add((i + 1) / 20D * 10);
